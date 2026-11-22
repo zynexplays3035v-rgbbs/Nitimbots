@@ -1,0 +1,50 @@
+GUILD GLORY — PREMIUM WEB CONTROL
+
+1. Install dependencies:
+   pip install -r requirements.txt
+
+2. Start the project:
+   python app.py
+
+3. Open the web dashboard:
+   http://127.0.0.1:5000
+   For a hosted deployment, open your hosting provider's public URL.
+
+GUILD DASHBOARD
+- Select a Guild ID and region.
+- Use Preview Guild to inspect basic guild information.
+- Press Start Guild + Auto Join to save the selected guild, send join requests
+  for the UID/password accounts already in accounts.json, and start the glory
+  tracking workflow when the game worker callback is available.
+- Use Refresh Guild to request a fresh guild snapshot.
+- The dashboard shows current glory, tracked bot contribution, member details,
+  and next-level remaining glory when the guild API provides the required
+  threshold fields.
+- Guild live glory/member data refreshes in the background when valid account
+  tokens are available to the game worker.
+
+ACCOUNT MANAGER
+- Add UID/password accounts or JWT tokens from the website.
+- When a guild has been selected and saved, adding a UID/password account
+  queues a join request to that guild automatically.
+- Account join requests are logged in the website's Live Logs panel.
+- Existing accounts are loaded from accounts.json.
+
+WEBSITE CONTROL
+- Account list, pause/resume, refresh, restart, delete, and logs are controlled
+  from the website.
+- Telegram bot control has been removed from this package.
+- The suji.py file is included as the standalone NG SUJEET Auto Guild Joiner
+  reference; the website uses the same Join API parameter contract.
+
+IMPORTANT
+- Only use accounts you own or are authorized to manage.
+- Join requests are not the same as confirmed membership. Check the live member
+  list or game response for confirmation.
+- The "Bot Contributed" value is measured from the saved glory baseline when
+  tracking starts. If no valid game token is available, live glory may remain
+  unavailable until the worker logs in.
+- Next-level remaining glory is shown only when the guild API supplies a
+  next-level target/remaining field. The dashboard does not guess thresholds.
+- Keep the dashboard private or protect it with authentication before public
+  deployment. The existing API routes should not be exposed to untrusted users.
